@@ -1,0 +1,73 @@
+# Amazon Review Sentiment Analyzer
+
+This project is a **Sentiment Analysis Web Application** built using a **CNN + LSTM hybrid deep learning model** in TensorFlow and deployed using Flask.
+
+---
+
+## Requirements
+
+- **Python:** 3.10.13
+- **TensorFlow:** 2.10.0
+- **Flask:** For serving the web app
+- **nltk:**
+- **pandas:**
+- **matplotlib:**
+- **scikit learn**
+-**gensim**
+
+
+
+
+All required packages are listed in `requirements.txt`.
+
+---
+
+## Setup Instructions
+
+### Create & Activate a Virtual Environment in terminal or Anaconda Environment
+
+python -m venv venv
+source venv/bin/activate       # On Linux/Mac
+venv\Scripts\activate          # On Windows
+
+---
+
+
+### Install Required Packages
+
+pip install -r requirements.txt
+
+---
+
+
+### Run the Model Notebook
+
+Open and run the notebook to:
+- Clean and preprocess data
+
+- Train the CNN + LSTM sentiment model
+
+- Evaluate performance
+
+- Generate predictions
+
+Saved Files After Training:
+- sentiment_app/tokenizer.pkl - Serialized tokenizer for processing user input in the web app
+
+- model/best_model.h5 - Best performing trained model (based on validation accuracy)
+
+- custom_w2v.model - Word2Vec embeddings trained on all Amazon review text
+
+---
+
+### Run the Web Application
+
+Navigate to the web app folder:
+cd sentiment_app
+
+Start the Flask Server:
+python app.py
+
+Access the Web Interface:
+http://127.0.0.1:5000/
+

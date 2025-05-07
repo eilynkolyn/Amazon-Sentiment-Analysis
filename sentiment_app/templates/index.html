@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Amazon Review Sentiment Analyzer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 700px;
+            margin-top: 50px;
+        }
+        .result-box {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center">
+        <h1 class="mb-4 text-primary">Amazon Review Sentiment Analyzer</h1>
+        
+        <form method="POST" action="/predict">
+            <div class="form-floating mb-3">
+                <textarea class="form-control" placeholder="Type your review here..." name="review" id="review" style="height: 150px;" required>{{ review if review else '' }}</textarea>
+                <label for="review">Enter a review to analyze sentiment</label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg">Analyze Sentiment</button>
+        </form>
+
+        {% if sentiment %}
+        <div class="card result-box shadow-sm mt-5">
+            <div class="card-body">
+                <h5 class="card-title text-success">Prediction Result</h5>
+                <p class="card-text"><strong>Input Review:</strong><br>{{ review }}</p>
+                <p class="card-text">
+                    <strong>Predicted Sentiment:</strong> 
+                    <span class="text-{{ 'success' if sentiment == 'Positive Review' else 'danger' }}">{{ sentiment }}</span> 
+                    (Confidence: {{ confidence }})
+                </p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
